@@ -4,25 +4,18 @@ configuration:
   readonly_paths:
     - test/task1/index.spec.js
     - test/task1/mocha.opts
-    - test/task2/index.spec.js
-    - test/task2/mocha.opts
-    - test/task3/index.spec.js
-    - test/task3/mocha.opts
-    - test/task4/index.spec.js
-    - test/task4/mocha.opts
-    - test/task5/index.spec.js
-    - test/task5/mocha.opts
-    - data/restaurantOwners.json
     - data/restaurants.json
-    - data/orders.json
   scoring:
-    command: echo "No test command configured for this branch. Use task level testcases."
+    command: "npm install && npm run test:task1"
     files:
-      - unit.xml
+      - output/task1.xml
+    hidden_files_paths:
+      - test/task1/index.spec.js
+      - test/task1/mocha.opts
   ide_config:
     default_open_files:
       - index.js
     project_menu:
       run: npm start
       install: npm install
-      test: echo "No test command configured for this branch. Use task level testcases."
+      test: echo npm install && npm run test:task1
