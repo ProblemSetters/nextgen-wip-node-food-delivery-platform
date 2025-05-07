@@ -8,8 +8,7 @@
     "start": "node index.js",
     "prestart": "npm install",
     "pretest": "npm install",
-    "test:task1": "cross-env NODE_ENV=test PORT=8081 MOCHA_FILE=./output/task1.xml mocha --reporter mocha-multi-reporters --reporter-options configFile=config.json test/task1/*.js --exit",
-    "test:task3": "cross-env NODE_ENV=test PORT=8081 MOCHA_FILE=./output/task3.xml mocha --reporter mocha-multi-reporters --reporter-options configFile=config.json test/task3/*.js --exit"
+    "test:task1": "cross-env NODE_ENV=test PORT=8081 MOCHA_FILE=./output/task1.xml mocha --reporter mocha-multi-reporters --reporter-options configFile=config.json test/task1/*.js --exit"
   },
   "author": "",
   "license": "ISC",
