@@ -1,0 +1,139 @@
+[
+  {
+    "id": "1",
+    "name": "Tasty Bites",
+    "location": "Downtown",
+    "cuisine": ["Indian", "Chinese"],
+    "rating": 4.5,
+    "availability": true,
+    "menu": [
+      {
+        "itemId": "201",
+        "name": "Butter Chicken",
+        "price": 12.99,
+        "category": "Main Course",
+        "availability": true
+      },
+      {
+        "itemId": "202",
+        "name": "Fried Rice",
+        "price": 8.99,
+        "category": "Main Course",
+        "availability": true
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Pasta Palace",
+    "location": "Uptown",
+    "cuisine": ["Italian"],
+    "rating": 4.2,
+    "availability": false,
+    "menu": [
+      {
+        "itemId": "203",
+        "name": "Spaghetti Carbonara",
+        "price": 10.99,
+        "category": "Main Course",
+        "availability": true
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "name": "Sushi Haven",
+    "location": "Midtown",
+    "cuisine": ["Japanese"],
+    "rating": 4.8,
+    "availability": true,
+    "menu": [
+      {
+        "itemId": "204",
+        "name": "Salmon Sushi",
+        "price": 15.99,
+        "category": "Sushi",
+        "availability": true
+      },
+      {
+        "itemId": "205",
+        "name": "Miso Soup",
+        "price": 4.99,
+        "category": "Soup",
+        "availability": true
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Burger Barn",
+    "location": "Downtown",
+    "cuisine": ["American"],
+    "rating": 4.3,
+    "availability": true,
+    "menu": [
+      {
+        "itemId": "206",
+        "name": "Cheeseburger",
+        "price": 9.99,
+        "category": "Main Course",
+        "availability": true
+      },
+      {
+        "itemId": "207",
+        "name": "French Fries",
+        "price": 3.99,
+        "category": "Side",
+        "availability": true
+      }
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Taco Fiesta",
+    "location": "Suburbs",
+    "cuisine": ["Mexican"],
+    "rating": 4.6,
+    "availability": false,
+    "menu": [
+      {
+        "itemId": "208",
+        "name": "Chicken Tacos",
+        "price": 7.99,
+        "category": "Main Course",
+        "availability": false
+      },
+      {
+        "itemId": "209",
+        "name": "Guacamole",
+        "price": 5.49,
+        "category": "Appetizer",
+        "availability": true
+      }
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Vegan Delight",
+    "location": "Midtown",
+    "cuisine": ["Vegan"],
+    "rating": 4.7,
+    "availability": true,
+    "menu": [
+      {
+        "itemId": "210",
+        "name": "Vegan Burger",
+        "price": 10.49,
+        "category": "Main Course",
+        "availability": true
+      },
+      {
+        "itemId": "211",
+        "name": "Quinoa Salad",
+        "price": 8.99,
+        "category": "Salad",
+        "availability": true
+      }
+    ]
+  }
+]
