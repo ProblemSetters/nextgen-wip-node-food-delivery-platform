@@ -1,6 +1,8 @@
 
 const express = require("express");
 const { json } = require("express");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -9,8 +11,29 @@ const menuRoutes = require("./routes/menuRoutes.js");
 
 app.use(json());
 
+// Swagger definition
+const swaggerOptions = {
+  swaggerDefinition: {
+    openapi: "3.0.0",
+    info: {
+      title: "Food Delivery Platform API",
+      version: "1.0.0",
+      description: "API documentation for the Food Delivery Platform",
+    },
+    servers: [
+      {
+        url: `http://localhost:${PORT}`,
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
 app.get('/', (req, res) => {
-   res.send('<h1>Welcome to Food Delivery Platform</h1>');
+  res.redirect('/api-docs');
 });
 
 // Routes
