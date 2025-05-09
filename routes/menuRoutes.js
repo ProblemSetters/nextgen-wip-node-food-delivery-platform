@@ -6,6 +6,11 @@ const { validateMenu } = require("../middleware/validateMenu");
 
 router.post("/:restaurantId", validateMenu, menuController.addMenuItem);
 
+router.get("/:restaurantId", menuController.getMenu);
+router.put("/item/:itemId", menuController.updateMenuItem);
+router.patch("/item/:itemId", menuController.updateAvailability);
+router.delete("/item/:itemId", menuController.deleteMenuItem);
+
 /**
  * @swagger
  * tags:
@@ -103,6 +108,160 @@ router.post("/:restaurantId", validateMenu, menuController.addMenuItem);
  *                         message: "Availability should be boolean."
  *                       - field: "availability"
  *                         message: "Availability is required."
+ */
+
+/**
+ * @swagger
+ * /menu/{restaurantId}:
+ *   get:
+ *     summary: Retrieve the entire menu of a specific restaurant
+ *     tags: [Menu]
+ *     parameters:
+ *       - in: path
+ *         name: restaurantId
+ *         required: true
+ *         description: ID of the restaurant to retrieve the menu from
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Successfully retrieved menu
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   itemId:
+ *                     type: string
+ *                   name:
+ *                     type: string
+ *                   price:
+ *                     type: number
+ *                     format: float
+ *                   category:
+ *                     type: string
+ *                   availability:
+ *                     type: boolean
+ */
+
+/**
+ * @swagger
+ * /menu/item/{itemId}:
+ *   put:
+ *     summary: Update one or more details of a specific menu item
+ *     tags: [Menu]
+ *     parameters:
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         description: ID of the menu item to update
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               itemId:
+ *                 type: string
+ *               name:
+ *                 type: string
+ *               price:
+ *                 type: number
+ *                 format: float
+ *               category:
+ *                 type: string
+ *               availability:
+ *                 type: boolean
+ *     responses:
+ *       200:
+ *         description: Menu item updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
+/**
+ * @swagger
+ * /menu/item/{itemId}:
+ *   patch:
+ *     summary: Update the availability status of a specific menu item
+ *     tags: [Menu]
+ *     parameters:
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         description: ID of the menu item to update availability
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               availability:
+ *                 type: boolean
+ *     responses:
+ *       200:
+ *         description: Availability updated successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
+/**
+ * @swagger
+ * /menu/item/{itemId}:
+ *   delete:
+ *     summary: Delete a specific menu item by its ID
+ *     tags: [Menu]
+ *     parameters:
+ *       - in: path
+ *         name: itemId
+ *         required: true
+ *         description: ID of the menu item to delete
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: Menu item deleted successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 menu:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       itemId:
+ *                         type: string
+ *                       name:
+ *                         type: string
+ *                       price:
+ *                         type: number
+ *                         format: float
+ *                       category:
+ *                         type: string
+ *                       availability:
+ *                         type: boolean
  */
 
 module.exports = router;
