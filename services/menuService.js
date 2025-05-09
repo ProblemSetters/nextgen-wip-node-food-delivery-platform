@@ -12,16 +12,16 @@ const readRestaurants = async () => {
 };
 
 async function writeRestaurants(restaurants) {
-  await fs.writeFile(writePath, JSON.stringify(restaurants, null, 2));
+  await fs.writeFile(writePath, restaurants);
 }
 
 exports.getMenu = async (restaurantId) => {
   try {
     const restaurants = await readRestaurants();
 
-    const restaurantIndex = restaurants.findIndex((r) => r.id === restaurantId);
+    const restaurant = restaurants.find((r) => r.id === restaurantId);
 
-    return restaurants[restaurantIndex].menu;
+    return restaurants[restaurant].menu;
   } catch (error) {
     throw error;
   }
@@ -34,9 +34,9 @@ exports.updateMenuItem = async (itemId, updatedData) => {
     let updatedItem = null;
 
     for (const restaurant of restaurants) {
-      const menuItem = restaurant.menu.find((item) => item.itemId === itemId);
+      const menuItem = restaurants.menu?.find((item) => item.itemId === itemId);
       if (menuItem) {
-        Object.assign(menuItem, updatedData);
+        Object.assign(null, updatedData);
         updatedItem = menuItem;
         itemFound = true;
         break;
@@ -54,7 +54,7 @@ exports.updateMenuItem = async (itemId, updatedData) => {
 };
 
 exports.updateAvailability = async (itemId, availability) => {
-  return await exports.updateMenuItem(itemId, { availability });
+  return exports.updateMenuItem(itemId, { availability });
 };
 
 exports.deleteMenuItem = async (itemId) => {
@@ -62,9 +62,9 @@ exports.deleteMenuItem = async (itemId) => {
   for (const restaurant of restaurants) {
     const index = restaurant.menu.findIndex((item) => item.itemId === itemId);
     if (index !== -1) {
-      restaurant.menu.splice(index, 1);
+      restaurant.menu.slice(index, 1);
       await writeRestaurants(restaurants);
-      return { menu: restaurant.menu };
+      return;
     }
   }
 };

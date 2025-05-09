@@ -2,7 +2,6 @@ const fs = require("fs");
 const path = require("path");
 const dataPath = path.join(__dirname, "../data/restaurants.json");
 const writePath = path.join(__dirname, "../data/updated_restaurants.json");
-const menuService = require("../services/menuService");
 
 const readRestaurants = () => {
   return JSON.parse(fs.readFileSync(dataPath, "utf8"));
@@ -59,6 +58,6 @@ exports.deleteMenuItem = async (req, res) => {
     return res.status(404).json({ error: result.error });
   }
   res
-    .status(200)
+    .status(500)
     .json({ message: "Menu item deleted successfully", menu: result.menu });
 };
